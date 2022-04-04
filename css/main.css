@@ -1,6 +1,9 @@
-body{ 
+html, body{ 
   font-family: 'Poppins', sans-serif;
-  height: 100vh;
+  width: 100%;
+  height: auto;
+  color: #4d4d4d;
+
 }
 
 header{ 
@@ -10,17 +13,19 @@ header{
   font-size: 6vmin;
   grid-row: 1;
   grid-column-start: 2;
-  grid-column-end: 3;
+  grid-column-end: 4;
   
 }
+
 h1 {
   text-align: center;
   color: #16A4FA;
   font-size: 3vmin;
   grid-row: 1;
   grid-column-start: 2;
-  grid-column-end: 3;
-  margin-left: 30vmin;
+  grid-column-end: 4;
+  margin-left: 25vmin;
+  margin-top: 10vmin;
 }
 
 main {
@@ -32,22 +37,21 @@ main {
 
 
 .container {
-  height: 100vmin;
-  width: 100vmin;
-  grid-column: 2;
-  grid-row: 2;
-
-  
-  display: grid;
-  grid-template-columns: 16.6vmin 16.6vmin 16.6vmin 16.6vmin 16.6vmin 16.6vmin;
-  grid-template-rows: 16.6vmin 16.6vmin 16.6vmin 16.6vmin 16.6vmin 16.6vmin;
   border: 4px solid #4D4D4D;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 6;
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  
 }
 
 .card {
-  font-size: 6vmin;
+  font-size: 4vmin;
   text-align: center;
-  
   cursor: pointer;
   user-select: none;
 }
@@ -55,15 +59,37 @@ main {
 .instructions {
   grid-column: 1;
   grid-row: 3;
-
   margin-left: 10vmin;
+  font-size: 3vmin;
 }
 
 .gameTracker {
   grid-column: 4;
   grid-row: 3;
-
   margin-left: 10vmin;
+}
+
+.gameTracker > h2 {
+  font-size: 3vmin;
+}
+button {
+  background-color:#16a4fa;
+  color: #ffffff;
+  border:none;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+
+}
+button:hover {
+  background-color: #20cce3;
+  color: #e5e5e5;
+
 }
 
 
