@@ -39,13 +39,19 @@ function render() {
 function handleCard(evt) {
   evt.target.style.backgroundColor = 'red';
 }
-function shuffleCards(arr) {
-  let currentIdx = arr.length, randomIdx;
-  while (currentIdx !== 0){
-    randomIdx = Math.floor(Math.random() * currentIdx);
-    currentIdx--;
 
-    [arr[currentIdx], arr[currentIdx]] = [arr[randomIdx], arr[currentIdx]];
+//Function takes in an array parameter, while the array length is NOT empty 
+//run the random function, decreasing the length each loop and swap indexs 
+function shuffleCards(arr) {
+  let m = arr.length;
+
+  while(m !== 0) {
+    let randIdx = Math.floor(Math.random() * m--);
+
+    //use temporary variable to swap index 
+    let tmp = arr[m];
+    arr[m] = arr[randIdx];
+    arr[randIdx] = tmp;
   }
   return arr;
 }
