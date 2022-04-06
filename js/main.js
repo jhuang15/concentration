@@ -1,32 +1,33 @@
 /*----- constants -----*/
-const CARD_DECK = ['#F74305','#F74305', //red
-  '#F54D00','#F54D00', //orange red
-  '#F7BD05','#F7BD05', //orange
-  '#DEA60B','#DEA60B', //mustard yellow
-  '#F8CA81','#F8CA81', //beige
-  '#F5E801','#F5E801', //yellow
-  '#D7F884','#D7F884', //lime yellow
-  '#8CF08B','#8CF08B', //light green
-  '#0BDE51','#0BDE51', //green
-  '#6BFA00','#6BFA00', //neon green
-  '#00EDFA','#00EDFA', //light blue
-  '#8BB6F0','#8BB6F0', //dusty light blue
-  '#0567FA','#0567FA', //blue
-  '#8304D6','#8304D6', //purple 
-  '#DBB3F5','#DBB3F5', //light purple
-  '#FAAAE5','#FAAAE5', //light pink
-  '#F88681','#F88681', //blush pink
-  '#F8886B','#F8886B' //salmon
-  ] 
+const CARD_DECK = [
+  ['#F74305','#F74305',//red
+  '#F54D00','#F54D00',//orange red
+  '#F7BD05','#F7BD05'],//orange
+  ['#DEA60B','#DEA60B',//mustard yellow
+  '#F8CA81','#F8CA81',//beige
+  '#F5E801','#F5E801'],//yellow
+  ['#D7F884','#D7F884',//lime yellow
+  '#8CF08B','#8CF08B',//light green
+  '#0BDE51','#0BDE51'],//green
+  ['#6BFA00','#6BFA00',//neon green
+  '#00EDFA','#00EDFA',//light blue
+  '#8BB6F0','#8BB6F0'],//dusty light blue
+  ['#0567FA','#0567FA',//blue
+  '#8304D6','#8304D6',//purple 
+  '#DBB3F5','#DBB3F5'],//light purple
+  ['#FAAAE5','#FAAAE5',//light pink
+  '#F88681','#F88681',//blush pink
+  '#F8886B','#F8886B']//salmon
+  ]; 
 
-  const NULL_CARD = 'green';
+  const NULL_CARD = 'D5D5D5';
 /*----- app's state (variables) -----*/
 let firstCard, secondCard; //An array index is assigned to that varible 
 let flipped; // 'T' -> the card has flipped, 'F' -> the card has not been clicked
 let gameStatus; // 'W' -> Win; 'L' -> Loss; null -> game in progress
-let timeLeft;
+let timeLeft = 30;
 /*----- cached element references -----*/
-const cardEl = document.querySelectorAll('.card');
+const cardEl = [...document.querySelectorAll('.card')];
 const playBtn = document.getElementById('play-btn');
 const timeEl = document.getElementById('time');
 const scoreEl = document.getElementById('score');
@@ -44,21 +45,20 @@ init();
 function init() {
   firstCard = null; 
   secondCard = null;
-  flipped = null;
-  gameStatus = null;
-  timeLeft = 30; //set the countdown timer
- // let timeoutId = setInterval(countdown, 1000);
+  ignoreClicks = false;
+  
   render();
 }
 
 function render() {
-  
+  //let timeoutId = setInterval(countdown, 1000);
   shuffleCards(CARD_DECK); //Call shuffleCards to shuffle the colors in the array for each new board
 }
 
 function handleCard(evt) {
   
-  evt.target.style.backgroundColor = CARD_DECK[1];
+    evt.target.style.backgroundColor = CARD_DECK[1][3];
+    render();
 }
 
 //Function takes in an array parameter, while the array length is NOT empty 
