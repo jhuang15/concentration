@@ -53,7 +53,7 @@ main {
   text-align: center;
   cursor: pointer;
   user-select: none;
-  background-color: #E5E5E5;
+  /*background-color: #E5E5E5;*/
   margin: 1px;
 }
 
