@@ -28,15 +28,17 @@ h1 {
 }
 
 main {
+  width:auto;
   justify-content: center;
   display: grid;
-  grid-template-columns: 40vmin 50vmin 50vmin 40vmin;
+  grid-template-columns: 30vmin 40vmin 40vmin 30vmin;
   grid-template-rows: 20vmin 20vmin 20vmin 20vmin 20vmin;
 }
 
 
 .container {
   border: 4px solid #4D4D4D;
+  margin-bottom: 5vmin;
   grid-column-start: 2;
   grid-column-end: 4;
   grid-row-start: 2;
@@ -53,15 +55,19 @@ main {
   text-align: center;
   cursor: pointer;
   user-select: none;
-  /*background-color: #E5E5E5;*/
   margin: 1px;
 }
 
 .instructions {
   grid-column: 1;
-  grid-row: 3;
-  margin-left: 10vmin;
-  font-size: 3vmin;
+  grid-row: 2;
+  margin-right: 5vmin;
+  font-size: 2.6vmin;
+  text-align: center;
+}
+
+p {
+  font-size: 2vmin;
 }
 
 .gameTracker {
@@ -71,19 +77,19 @@ main {
 }
 
 .gameTracker > h2 {
-  font-size: 3vmin;
+  font-size: 2.6vmin;
 }
 button {
   font-family: 'Poppins', sans-serif;
   background-color:#16a4fa;
   color: #ffffff;
   border:none;
-  padding: 10px 25px;
+  padding: 2vmin 7vmin;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
+  font-size: 2vmin;
+  margin: 2vmin 1vmin;
   transition-duration: 0.4s;
   cursor: pointer;
 
