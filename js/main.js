@@ -28,11 +28,13 @@ let firstCard; //first card clicked (card object) or null
 let secondCard;
 let ignoreClicks; 
 let timeLeft;
-
+let thisTimeout; //for 1 second timer in handleChoice function
 /*----- cached element references -----*/
 const cardEl = [...document.querySelectorAll('.card')];
 const playBtn = document.getElementById('play-btn');
 const timeEl = document.getElementById('time');
+const instrEl = document.getElementById('instructions');
+const scoreEl = document.getElementById('score');
 
 /*----- event listeners -----*/
 
@@ -49,27 +51,75 @@ function init() {
   ignoreClicks = false;
   cards = getShuffledCards();
 
+  timeLeft = 30;
+  //instrEl.setAttribute('hidden', true); //hide instruction when game is in play
   render();
 }
 
 function render() {
- // CARD_DECK.forEach(function(card, idx) {
-  //  const imgEl = document.getElementById(idx);
-  //  const src = (card.matched || card === firstCard) ? CARD_DECK[idx] : CARD_BACK;
-  //});
-  //shuffleCards(CARD_DECK); //Call shuffleCards to shuffle the colors in the array for each new board
-
   let timeoutId = setInterval(countdown, 1000);
 
   cards.forEach(function(card, idx){
     const colorDiv = document.getElementById(idx);
-    
     //colorDiv.setAttribute('style', `background-color: ${cards[idx].hex}` ) //displays colors
     const hex = (card.matched || card === firstCard) ? card.hex : NULL_CARD;
     colorDiv.hex = hex;
     colorDiv.setAttribute('style', `background-color: ${colorDiv.hex}`); //sets the board to default gray 
-    
   });
+
+  
+}
+
+function renderHide(){
+  
+  console.log(instrEl);
+}
+
+function handleChoice(evt) {
+  const cardIdx = parseInt(evt.target.id); 
+
+  cardEl[cardIdx].style.backgroundColor = cards[cardIdx].hex; // !!!!DONT TOUCH !!!!
+  //console.log(cardEl[cardIdx]);
+  
+  if (isNaN(cardIdx) || ignoreClicks) return;
+  let secondCard = cards[cardIdx]; //NEW added in .hex
+  if (firstCard){
+   
+    if (firstCard.hex === secondCard.hex) { 
+      firstCard.matched = secondCard.matched = true;
+      console.log('firstCard.color -->'+firstCard.hex);
+      console.log('secondCard.color -->'+secondCard.hex);
+      console.log('firstCard.matched -->'+firstCard.matched);
+      console.log('secondCard.matched -->'+secondCard.matched);
+      
+      //!!!call score function here to increase score!!!
+
+    } else {
+      //set the card to true so it'll show for one second
+      //thisTimeout = setTimeout(function(){
+       // secondTimer();
+        //firstCard.matched = secondCard.matched = true; //this line makes the first choice null and the second choice doesnt show up until you click
+       // console.log(cards[cardIdx])
+       // clearTimeout(thisTimeout);
+      //}, 1000);
+
+    }
+    firstCard = null;
+    console.log('firstCard=null -->'+firstCard);
+  } else {
+    firstCard = secondCard;
+    console.log('firstCard=Secondcard -->'+firstCard);
+  }
+
+  
+  function secondTimer() {
+    clearTimeout(thisTimeout);
+    firstCard.matched = true;
+    secondCard.matched = true;
+  }
+  
+  
+  render();
 }
 
 function getShuffledCards() {
@@ -100,60 +150,11 @@ function shuffleCards(arr) {
   }
   return arr;
 }
-
-
-
-
-function handleChoice(evt) {
-  const cardIdx = parseInt(evt.target.id); 
-
-  cardEl[cardIdx].style.backgroundColor = cards[cardIdx].hex; // !!!!DONT TOUCH !!!!
-  //console.log(cardEl[cardIdx]);
-
-  if (isNaN(cardIdx) || ignoreClicks) return;
-  const secondCard = cards[cardIdx]; //NEW added in .hex
-  if (firstCard){
-   
-    if (firstCard.hex === secondCard.hex) { //new changed color to hex
-      firstCard.matched = secondCard.matched = true;
-      console.log('firstCard.color -->'+firstCard.hex);
-      console.log('secondCard.color -->'+secondCard.hex);
-      console.log('firstCard.matched -->'+firstCard.matched);
-      console.log('secondCard.matched -->'+secondCard.matched);
-    } else {
-      console.log('numBad++');
-    }
-    firstCard = null;
-    console.log('firstCard=null -->'+firstCard);
-  } else {
-    firstCard = secondCard;
-    console.log('firstCard=Secondcard -->'+firstCard);
-  }
-  
-  render();
-}
-/*
-//Function takes in an array parameter, while the array length is NOT empty 
-//run the random function, decreasing the length each loop and swap indexs 
-function shuffleCards(arr) {
-  let m = arr.length;
-
-  while(m !== 0) {
-    let randIdx = Math.floor(Math.random() * m--);
-
-    //use temporary variable to swap index 
-    let tmp = arr[m];
-    arr[m] = arr[randIdx];
-    arr[randIdx] = tmp;
-  }
-  return arr;
-}
-*/
 function countdown() {
-  timeLeft = 30; //move this later, timer wont run
+   //move this later, timer wont run
   if (timeLeft === -1) {
     clearTimeout(timeoutId);
-    flipCards(); //Invoke function to flip cards over and start timing game
+     //Invoke function to flip cards over and start timing game
   } else {
     timeEl.innerHTML = timeLeft + ' seconds remaining';
     timeLeft--;
@@ -162,5 +163,9 @@ function countdown() {
 
 function flipCards () {
 
+}
+
+function renderScore(){
+  
 }
 
