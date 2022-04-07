@@ -63,11 +63,12 @@ function render() {
 
   cards.forEach(function(card, idx){
     const colorDiv = document.getElementById(idx);
-
+    
+    //colorDiv.setAttribute('style', `background-color: ${cards[idx].hex}` ) //displays colors
     const hex = (card.matched || card === firstCard) ? card.hex : NULL_CARD;
     colorDiv.hex = hex;
     colorDiv.setAttribute('style', `background-color: ${colorDiv.hex}`); //sets the board to default gray 
-    //console.log(colorDiv)
+    
   });
 }
 
@@ -85,7 +86,7 @@ function getShuffledCards() {
   return cards;
 }
 
-
+//MY SHUFFLE FUNCTION 
 function shuffleCards(arr) {
   let m = arr.length;
 
@@ -106,30 +107,32 @@ function shuffleCards(arr) {
 function handleChoice(evt) {
   const cardIdx = parseInt(evt.target.id); 
 
-  cardEl[cardIdx].style.backgroundColor = cards[cardIdx].hex; //DONT TOUCH 
+  cardEl[cardIdx].style.backgroundColor = cards[cardIdx].hex; // !!!!DONT TOUCH !!!!
   //console.log(cardEl[cardIdx]);
 
   if (isNaN(cardIdx) || ignoreClicks) return;
-  const card = cards[cardIdx];
+  const secondCard = cards[cardIdx]; //NEW added in .hex
   if (firstCard){
-    if (firstCard.color == card.color) {
-      firstCard.matched = card.matched = true;
-    } 
+   
+    if (firstCard.hex === secondCard.hex) { //new changed color to hex
+      firstCard.matched = secondCard.matched = true;
+      console.log('firstCard.color -->'+firstCard.hex);
+      console.log('secondCard.color -->'+secondCard.hex);
+      console.log('firstCard.matched -->'+firstCard.matched);
+      console.log('secondCard.matched -->'+secondCard.matched);
+    } else {
+      console.log('numBad++');
+    }
     firstCard = null;
+    console.log('firstCard=null -->'+firstCard);
   } else {
-    firstCard = card;
+    firstCard = secondCard;
+    console.log('firstCard=Secondcard -->'+firstCard);
   }
   
   render();
 }
-
 /*
-function handleCard(evt) {
-    
-    evt.target.style.backgroundColor = CARD_DECK[1][3];
-    render();
-}
-
 //Function takes in an array parameter, while the array length is NOT empty 
 //run the random function, decreasing the length each loop and swap indexs 
 function shuffleCards(arr) {
