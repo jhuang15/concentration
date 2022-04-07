@@ -1,25 +1,4 @@
-/*----- constants -----
-const CARD_DECK = [
-  ['#F74305','#F74305',//red
-  '#F54D00','#F54D00',//orange red
-  '#F7BD05','#F7BD05'],//orange
-  ['#DEA60B','#DEA60B',//mustard yellow
-  '#F8CA81','#F8CA81',//beige
-  '#F5E801','#F5E801'],//yellow
-  ['#D7F884','#D7F884',//lime yellow
-  '#8CF08B','#8CF08B',//light green
-  '#0BDE51','#0BDE51'],//green
-  ['#6BFA00','#6BFA00',//neon green
-  '#00EDFA','#00EDFA',//light blue
-  '#8BB6F0','#8BB6F0'],//dusty light blue
-  ['#0567FA','#0567FA',//blue
-  '#8304D6','#8304D6',//purple 
-  '#DBB3F5','#DBB3F5'],//light purple
-  ['#FAAAE5','#FAAAE5',//light pink
-  '#F88681','#F88681',//blush pink
-  '#F8886B','#F8886B']//salmon
-  ]; 
-*/
+/*----- constants -----*/
   const CARD_DECK = [
     {hex:'#F74305', matched: false},
     {hex:'#F54D00', matched: false},
@@ -41,39 +20,23 @@ const CARD_DECK = [
     {hex:'#F8886B', matched: false},
   ];
 
-  const NULL_CARD = 'D5D5D5';
+  const NULL_CARD = '#D5D5D5';
 
 /*----- app's state (variables) -----*/
-//let firstCard, secondCard; //An array index is assigned to that varible 
-//let flipped; // 'T' -> the card has flipped, 'F' -> the card has not been clicked
-//let gameStatus; // 'W' -> Win; 'L' -> Loss; null -> game in progress
-//let timeLeft = 30;
-
-
-
-
 let cards; // Array of 36 shuffled card objects
 let firstCard; //first card clicked (card object) or null
+let secondCard;
 let ignoreClicks; 
-
-
+let timeLeft;
 
 /*----- cached element references -----*/
 const cardEl = [...document.querySelectorAll('.card')];
-//const playBtn = document.getElementById('play-btn');
-//const timeEl = document.getElementById('time');
-//const scoreEl = document.getElementById('score');
+const playBtn = document.getElementById('play-btn');
+const timeEl = document.getElementById('time');
 
 /*----- event listeners -----*/
-//cardEl.forEach (function (card) {
-  //card.addEventListener('click', handleCard);
-//});
-//playBtn.addEventListener('click', init);
 
-
-
-//document.querySelector('.card').addEventListener('click', handleChoice);
-
+playBtn.addEventListener('click', init);
 cardEl.forEach (function (card) {
   card.addEventListener('click', handleChoice)
 });
@@ -81,14 +44,11 @@ cardEl.forEach (function (card) {
 init();
 
 function init() {
+  firstCard = null; 
+  secondCard = null;
+  ignoreClicks = false;
   cards = getShuffledCards();
 
-
-
-  firstCard = null; 
-  //secondCard = null;
-  ignoreClicks = false;
-  //let timeoutId = setInterval(countdown, 1000);
   render();
 }
 
@@ -99,12 +59,16 @@ function render() {
   //});
   //shuffleCards(CARD_DECK); //Call shuffleCards to shuffle the colors in the array for each new board
 
-cards.forEach(function(card, idx){
-  const colorDiv = document.getElementById(idx);
-  const hex = (card.matched || card === firstCard) ? card.hex : NULL_CARD;
-  colorDiv.hex = hex;
-});
+  let timeoutId = setInterval(countdown, 1000);
 
+  cards.forEach(function(card, idx){
+    const colorDiv = document.getElementById(idx);
+
+    const hex = (card.matched || card === firstCard) ? card.hex : NULL_CARD;
+    colorDiv.hex = hex;
+    colorDiv.setAttribute('style', `background-color: ${colorDiv.hex}`); //sets the board to default gray 
+    //console.log(colorDiv)
+  });
 }
 
 function getShuffledCards() {
@@ -116,17 +80,34 @@ function getShuffledCards() {
   while (tempCards.length) {
     let rndIdx = Math.floor(Math.random() *tempCards.length);
     let card = tempCards.splice(rndIdx, 1)[0];
-    cards.push(card);
+   cards.push(card);
   }
   return cards;
 }
 
 
+function shuffleCards(arr) {
+  let m = arr.length;
+
+  while(m !== 0) {
+    let randIdx = Math.floor(Math.random() * m--);
+
+    //use temporary variable to swap index 
+    let tmp = arr[m];
+    arr[m] = arr[randIdx];
+    arr[randIdx] = tmp;
+  }
+  return arr;
+}
+
+
+
+
 function handleChoice(evt) {
-  const cardIdx = parseInt(evt.target.id);
-  
-  
+  const cardIdx = parseInt(evt.target.id); 
+
   cardEl[cardIdx].style.backgroundColor = cards[cardIdx].hex; //DONT TOUCH 
+  //console.log(cardEl[cardIdx]);
 
   if (isNaN(cardIdx) || ignoreClicks) return;
   const card = cards[cardIdx];
@@ -134,11 +115,11 @@ function handleChoice(evt) {
     if (firstCard.color == card.color) {
       firstCard.matched = card.matched = true;
     } 
-    //firstCard = null;
+    firstCard = null;
   } else {
     firstCard = card;
   }
- 
+  
   render();
 }
 
@@ -164,8 +145,9 @@ function shuffleCards(arr) {
   }
   return arr;
 }
-
+*/
 function countdown() {
+  timeLeft = 30; //move this later, timer wont run
   if (timeLeft === -1) {
     clearTimeout(timeoutId);
     flipCards(); //Invoke function to flip cards over and start timing game
@@ -178,4 +160,4 @@ function countdown() {
 function flipCards () {
 
 }
-*/
+
