@@ -2,7 +2,6 @@ html, body{
   font-family: 'Poppins', sans-serif;
   color: #4d4d4d;
   height: 95vh;
-
 }
 
 header{ 
@@ -31,7 +30,7 @@ main {
   width:auto;
   justify-content: center;
   display: grid;
-  grid-template-columns: 30vmin 40vmin 40vmin 30vmin;
+  grid-template-columns: 30vmin 40vmin 40vmin 40vmin;
   grid-template-rows: 20vmin 20vmin 20vmin 20vmin 20vmin;
 }
 
@@ -84,12 +83,12 @@ button {
   background-color:#16a4fa;
   color: #ffffff;
   border:none;
-  padding: 2vmin 7vmin;
+  padding: 1vmin 3vmin;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 2vmin;
-  margin: 2vmin 1vmin;
+  margin: 1vmin 1vmin;
   transition-duration: 0.4s;
   cursor: pointer;
 
