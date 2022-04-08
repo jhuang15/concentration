@@ -25,7 +25,6 @@ const NULL_CARD = '#D5D5D5';
 let cards; 
 let firstCard; 
 let secondCard;
-//let ignoreClicks; 
 let score;
 let mins;
 let seconds;
@@ -123,7 +122,7 @@ function getShuffledCards() {
 }
 
 function renderScore(){
-  if (score === 2) {
+  if (score === 17) {
     scoreEl.innerText = `Completed board in ${mins}:${seconds}`;
   } else {
     scoreEl.innerHTML = `Score: ${++score}`;
