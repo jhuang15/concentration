@@ -62,7 +62,7 @@ main {
   grid-row: 2;
   margin-right: 5vmin;
   font-size: 2.6vmin;
-  text-align: center;
+  
 }
 
 p {
@@ -76,7 +76,7 @@ p {
 }
 
 .gameTracker > h2 {
-  font-size: 2.6vmin;
+  font-size: 2vmin;
 }
 button {
   font-family: 'Poppins', sans-serif;
