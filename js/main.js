@@ -123,7 +123,8 @@ function getShuffledCards() {
 
 function renderScore(){
   if (score === 17) {
-    scoreEl.innerText = `Completed board in ${mins}:${seconds}`;
+    scoreEl.innerText = `Completed board in 0${mins}:${seconds}`;
+    clearInterval(interval);
   } else {
     scoreEl.innerHTML = `Score: ${++score}`;
   }
