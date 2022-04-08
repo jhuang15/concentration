@@ -12,7 +12,8 @@
 <p>Welcome to a simple game of Concentration, a game of memory, which will test users’ ability to remember the placement of matching pairs on the board. 
 </p>
 <h3>:small_blue_diamond: Screenshots</h3>
-<img src="">
+<img width="1435" alt="Screen Shot 2022-04-08 at 3 57 15 AM" src="https://user-images.githubusercontent.com/40190560/162396335-7eee51af-d87a-48c3-9c84-d7a97a694525.png">
+<img width="1434" alt="Screen Shot 2022-04-08 at 4 06 56 AM" src="https://user-images.githubusercontent.com/40190560/162396399-b84e3398-90b4-4908-8c91-104fc6fe3456.png">
 
 <h3>:small_blue_diamond: Technologies Used</h3>
 <div><img src="https://img.shields.io/badge/-JavaScript-333?style=flat&logo=javascript">
@@ -27,3 +28,5 @@
 <h3>:small_blue_diamond: Next Steps</h3>
 <p> –First and second unmatched cards to present temporary <br> –Have elements hidden when the game is in place <br> –Show gameboard color tiles for 30 seconds for users to remember before the game begins <br> –Include a pair of death cards, if the user encounters matching death pairs then the user lose and game ends</p>
 
+
+<img width="1434" alt="Screen Shot 2022-04-08 at 4 06 56 AM" src="https://user-images.githubusercontent.com/40190560/162396399-b84e3398-90b4-4908-8c91-104fc6fe3456.png">
