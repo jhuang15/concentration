@@ -29,4 +29,4 @@
 <p> –First and second unmatched cards to present temporary <br> –Have elements hidden when the game is in place <br> –Show gameboard color tiles for 30 seconds for users to remember before the game begins <br> –Include a pair of death cards, if the user encounters matching death pairs then the user lose and game ends</p>
 
 
-<img width="1434" alt="Screen Shot 2022-04-08 at 4 06 56 AM" src="https://user-images.githubusercontent.com/40190560/162396399-b84e3398-90b4-4908-8c91-104fc6fe3456.png">
+
