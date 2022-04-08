@@ -9,7 +9,7 @@
 </div>
 
 <h3>:small_blue_diamond: Description</h3>
-<p>Welcome to a simple game of Concentration, a game of memory, which will test users’ ability to remember the placement of matching pairs on the board. 
+<p>Welcome to a simple game of Concentration, a game of memory, which will test users’ ability to remember the placement of matching pairs on the board. All tiles will be faced down and two cards will be flipped face side up overeach turn.
 </p>
 <h3>:small_blue_diamond: Screenshots</h3>
 <img width="1435" alt="Screen Shot 2022-04-08 at 3 57 15 AM" src="https://user-images.githubusercontent.com/40190560/162396335-7eee51af-d87a-48c3-9c84-d7a97a694525.png">
